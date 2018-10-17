@@ -7,8 +7,10 @@
   "dependencies": {
     "react": "16.5.2",
     "react-dom": "16.5.2",
+    "react-redux": "5.0.7",
     "react-redux-loading": "1.0.1",
-    "react-scripts": "2.0.3"
+    "react-scripts": "2.0.3",
+    "redux": "4.0.1"
   },
   "devDependencies": {},
   "scripts": {
