@@ -1,7 +1,10 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import LoadingBar from 'react-redux-loading';
 
-import { handleInitialData } from "../actions/shared";
+import { handleInitialData } from '../actions/shared';
+
+import Home from './Home';
 
 class App extends Component {
   componentDidMount() {
@@ -9,8 +12,19 @@ class App extends Component {
   }
 
   render() {
-    return <div>This is the App wrapper</div>;
+    return (
+      <div>
+        <LoadingBar />
+        <h3>Would Your Rather...</h3>
+        {this.props.loading === true ? null : <Home />}
+      </div>
+    );
   }
 }
 
-export default connect()(App);
+function mapStateToProps({ authedUser }) {
+  return {
+    loading: authedUser === null
+  };
+}
+export default connect(mapStateToProps)(App);
