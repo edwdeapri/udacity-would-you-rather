@@ -1,47 +1,22 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
-class Poll extends Component {
-  handleLike = e => {
-    e.preventDefault();
-  };
-  toParent = (e, id) => {
-    e.preventDefault();
-  };
-  render() {
-    const { poll } = this.props;
+import PollPreview from './PollPreview';
+import Error from './Error';
 
-    if (poll === null) {
-      return <p>This Poll doesn't exist</p>;
-    }
-    const { name, avatar, answerA, answerB } = poll;
-    return (
-      <div>
-        <div>
-          <img src={avatar} alt={`Avatar of ${name}`} />
-          <span>{name}</span>
-        </div>
-        <h2>Would You Rather...</h2>
-        <div>
-          <h3>Wants to Know</h3>
-          <div>
-            <p>{answerA}</p>
-            <p>{answerB}</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+const Poll = props => {
+  const { id } = props.match.params;
+  const { answeredIds, unansweredIds } = props;
+  return (
+    <div>
+      {answeredIds.includes(id) ? (
+        <PollPreview id={id} answered={true} />
+      ) : unansweredIds.includes(id) ? (
+        <PollPreview id={id} answered={false} />
+      ) : (
+        <Error />
+      )}
+    </div>
+  );
+};
 
-function mapStateToProps({ authedUser, users, questions }, { id }) {
-  const poll = questions[id];
-  return {
-    authedUser,
-    poll: poll
-      ? formatPoll(poll, users[poll.author], authedUser, parentPoll)
-      : null
-  };
-}
-
-export default connect(mapStateToProps)(Poll);
+export default Poll;
