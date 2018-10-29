@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import { handleReturnAnswer, handleReturnQuestion } from "../actions/questions";
-import NewPoll from "./NewPoll";
-import PollResult from "./PollResult";
-import PollWaiting from "./PollWaiting";
+import { handleReturnAnswer, handleReturnQuestion } from '../actions/questions';
+import NewPoll from './NewPoll';
+import PollResult from './PollResult';
+import PollWaiting from './PollWaiting';
 
 class PollPreview extends Component {
   state = {
-    selectedAnswer: "",
-    optionOne: "",
-    optionTwo: ""
+    selectedAnswer: '',
+    optionOne: '',
+    optionTwo: ''
   };
 
   _questionsIndex() {
@@ -18,16 +18,16 @@ class PollPreview extends Component {
     const question = questions[id];
     return (
       <div>
-        <p>{question["optionOne"]["text"]}</p>
+        <p>{question['optionOne']['text']}</p>
         <span> or </span>
-        <p>{question["optionTwo"]["text"]}</p>
+        <p>{question['optionTwo']['text']}</p>
       </div>
     );
   }
 
   handleAnswerChange = event => {
     event.preventDefault();
-    const selectedAnswer = event.target.innerHTML;
+    const selectedAnswer = event.target.value;
     const { dispatch, id } = this.props;
     dispatch(handleReturnAnswer(id, selectedAnswer));
     this.setState({
@@ -47,10 +47,10 @@ class PollPreview extends Component {
     const { optionOne, optionTwo } = this.state;
     this.props.dispatch(handleReturnQuestion(optionOne, optionTwo));
     this.setState({
-      optionOne: "",
-      optionTwo: ""
+      optionOne: '',
+      optionTwo: ''
     });
-    this.props.history.push("/questions");
+    this.props.history.push('/questions');
   };
 
   render() {
@@ -58,23 +58,25 @@ class PollPreview extends Component {
     const { optionOne, optionTwo } = this.state;
     const question = questions[id];
     const location = window.location.pathname;
-    const type = location.split("/").slice(-1)[0];
+    const type = location.split('/').slice(-1)[0];
     return (
-      <div className={`question ${type === "add" ? "new-question" : null}`}>
+      <div>
         <div>
           <img
-            src="{question
-            ? users[question.author].avatarURL
-            : users[authedUser].avatarURL}"
+            src={
+              question
+                ? users[question.author].avatarURL
+                : users[authedUser].avatarURL
+            }
           />
         </div>
         <div>
           <h2>
-            {question ? users[question.author].name : users[authedUser].name}{" "}
+            {question ? users[question.author].name : users[authedUser].name}{' '}
             Wants to Know...
           </h2>
           <h3>Would you rather...</h3>
-          {type === "questions" ? (
+          {type === 'questions' ? (
             this._questionsIndex()
           ) : type === id ? (
             answered === false ? (
@@ -85,7 +87,7 @@ class PollPreview extends Component {
             ) : (
               <PollResult answered={answered} id={id} />
             )
-          ) : type === "add" ? (
+          ) : type === 'add' ? (
             <NewPoll
               handleNewPoll={this.handleNewPoll}
               optionOne={optionOne}
@@ -97,7 +99,7 @@ class PollPreview extends Component {
           <div>
             <p>
               {question.optionOne.votes.length +
-                question.optionTwo.votes.length}{" "}
+                question.optionTwo.votes.length}{' '}
               Votes
             </p>
           </div>
@@ -106,8 +108,7 @@ class PollPreview extends Component {
             <button
               type="submit"
               disabled={!optionOne || !optionTwo}
-              onClick={this.handleSubmitPoll}
-            >
+              onClick={this.handleSubmitPoll}>
               Ask Now!
             </button>
           </div>

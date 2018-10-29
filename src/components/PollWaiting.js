@@ -7,10 +7,10 @@ const PollWaiting = props => {
   return (
     <div>
       <form>
-        <button onClick={props.handleAnswerChange}>
+        <button onClick={props.handleAnswerChange} value="optionOne">
           {question['optionOne']['text']}
         </button>
-        <button onClick={props.handleAnswerChange}>
+        <button onClick={props.handleAnswerChange} value="optionTwo">
           {question['optionTwo']['text']}
         </button>
       </form>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 const NewPoll = props => {
   const { handleNewPoll, answerOne, answerTwo } = props;
@@ -8,18 +8,18 @@ const NewPoll = props => {
         <textarea
           placeholder="First Answer"
           value={answerOne}
-          name="answerOne"
+          name="optionOne"
           onChange={handleNewPoll}
           rows="2"
-          style={{ resize: "none" }}
+          style={{ resize: 'none' }}
         />
         <textarea
           placeholder="Second Answer"
           value={answerTwo}
-          name="answerTwo"
+          name="optionTwo"
           onChange={handleNewPoll}
           rows="2"
-          style={{ resize: "none" }}
+          style={{ resize: 'none' }}
         />
       </form>
     </div>
