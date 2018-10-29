@@ -1,8 +1,8 @@
-import { saveQuestionAnswer, saveQuestion } from '../utils/api';
+import { saveQuestionAnswer, saveQuestion } from "../utils/api";
 
-export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
-export const RETURN_ANSWER = 'RETURN_ANSWER';
-export const RETURN_QUESTION = 'RETURN_QUESTION';
+export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
+export const RETURN_ANSWER = "RETURN_ANSWER";
+export const RETURN_QUESTION = "RETURN_QUESTION";
 
 export function receiveQuestions(questions) {
   return {
@@ -27,7 +27,7 @@ export function returnQuestion(question) {
   };
 }
 
-export function handleReturnAnswer(qid, answer) {
+export function handleReturnAnswer(authedUser, qid, answer) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
     dispatch(returnAnswer(authedUser, qid, answer));
@@ -39,12 +39,12 @@ export function handleReturnAnswer(qid, answer) {
   };
 }
 
-export function handleReturnQuestion(answerOne, answerTwo) {
+export function handleReturnQuestion(optionOne, optionTwo, authedUser) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
     return saveQuestion({
-      answerOneInput: answerOne,
-      answerTwoInput: answerTwo,
+      optionOneText: optionOne,
+      optionTwoText: optionTwo,
       author: authedUser
     }).then(question => dispatch(returnQuestion(question)));
   };

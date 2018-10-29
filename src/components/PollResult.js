@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class PollResult extends Component {
   render() {
@@ -11,17 +11,17 @@ class PollResult extends Component {
 
     const answerPercentage =
       question.optionOne.votes.length + question.optionTwo.votes.length;
-    let answerOnePercentage =
+    let optionOnePercentage =
       (question.optionOne.votes.length / answerPercentage) * 100;
-    let answerTwoPercentage =
+    let optionTwoPercentage =
       (question.optionTwo.votes.length / answerPercentage) * 100;
 
-    if (answerOnePercentage - answerTwoPercentage === -100) {
-      answerOnePercentage = 20;
-      answerTwoPercentage = 80;
-    } else if (answerTwoPercentage - answerOnePercentage === -100) {
-      answerOnePercentage = 80;
-      answerTwoPercentage = 20;
+    if (optionOnePercentage - optionTwoPercentage === -100) {
+      optionOnePercentage = 20;
+      optionTwoPercentage = 80;
+    } else if (optionTwoPercentage - optionOnePercentage === -100) {
+      optionOnePercentage = 80;
+      optionTwoPercentage = 20;
     }
 
     return (
@@ -29,7 +29,7 @@ class PollResult extends Component {
         <div>
           <div>
             <p>
-              {question['optionOne']['text']} -{' '}
+              {question["optionOne"]["text"]} -{" "}
               {(
                 (question.optionOne.votes.length / answerPercentage) *
                 100
@@ -39,7 +39,7 @@ class PollResult extends Component {
           </div>
           <div>
             <p>
-              {question['answerTwo']['text']} -{' '}
+              {question["optionTwo"]["text"]} -{" "}
               {(
                 (question.optionTwo.votes.length / answerPercentage) *
                 100

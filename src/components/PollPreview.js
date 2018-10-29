@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import { handleReturnAnswer, handleReturnQuestion } from '../actions/questions';
-import NewPoll from './NewPoll';
-import PollResult from './PollResult';
-import PollWaiting from './PollWaiting';
+import { handleReturnAnswer, handleReturnQuestion } from "../actions/questions";
+import NewPoll from "./NewPoll";
+import PollResult from "./PollResult";
+import PollWaiting from "./PollWaiting";
 
 class PollPreview extends Component {
   state = {
-    selectedAnswer: '',
-    answerOne: '',
-    answerTwo: ''
+    selectedAnswer: "",
+    optionOne: "",
+    optionTwo: ""
   };
 
   _questionsIndex() {
@@ -18,16 +18,16 @@ class PollPreview extends Component {
     const question = questions[id];
     return (
       <div>
-        <p>{question['optionOne']['text']}</p>
+        <p>{question["optionOne"]["text"]}</p>
         <span> or </span>
-        <p>{question['optionTwo']['text']}</p>
+        <p>{question["optionTwo"]["text"]}</p>
       </div>
     );
   }
 
   handleAnswerChange = event => {
     event.preventDefault();
-    const selectedAnswer = event.target.value;
+    const selectedAnswer = event.target.innerHTML;
     const { dispatch, id } = this.props;
     dispatch(handleReturnAnswer(id, selectedAnswer));
     this.setState({
@@ -44,23 +44,23 @@ class PollPreview extends Component {
 
   handleSubmitPoll = event => {
     event.preventDefault();
-    const { answerOne, answerTwo } = this.state;
-    this.props.dispatch(handleReturnQuestion(answerOne, answerTwo));
+    const { optionOne, optionTwo } = this.state;
+    this.props.dispatch(handleReturnQuestion(optionOne, optionTwo));
     this.setState({
-      answerOne: '',
-      answerTwo: ''
+      optionOne: "",
+      optionTwo: ""
     });
-    this.props.history.push('/questions');
+    this.props.history.push("/questions");
   };
 
   render() {
     const { id, users, questions, answered, authedUser } = this.props;
-    const { answerOne, answerTwo } = this.state;
+    const { optionOne, optionTwo } = this.state;
     const question = questions[id];
     const location = window.location.pathname;
-    const type = location.split('/').slice(-1)[0];
+    const type = location.split("/").slice(-1)[0];
     return (
-      <div className={`question ${type === 'add' ? 'new-question' : null}`}>
+      <div className={`question ${type === "add" ? "new-question" : null}`}>
         <div>
           <img
             src="{question
@@ -70,11 +70,11 @@ class PollPreview extends Component {
         </div>
         <div>
           <h2>
-            {question ? users[question.author].name : users[authedUser].name}{' '}
+            {question ? users[question.author].name : users[authedUser].name}{" "}
             Wants to Know...
           </h2>
           <h3>Would you rather...</h3>
-          {type === 'questions' ? (
+          {type === "questions" ? (
             this._questionsIndex()
           ) : type === id ? (
             answered === false ? (
@@ -85,19 +85,19 @@ class PollPreview extends Component {
             ) : (
               <PollResult answered={answered} id={id} />
             )
-          ) : type === 'add' ? (
+          ) : type === "add" ? (
             <NewPoll
               handleNewPoll={this.handleNewPoll}
-              answerOne={answerOne}
-              answerTwo={answerTwo}
+              optionOne={optionOne}
+              optionTwo={optionTwo}
             />
           ) : null}
         </div>
         {question ? (
           <div>
-            <p className="votes">
+            <p>
               {question.optionOne.votes.length +
-                question.optionTwo.votes.length}{' '}
+                question.optionTwo.votes.length}{" "}
               Votes
             </p>
           </div>
@@ -105,8 +105,9 @@ class PollPreview extends Component {
           <div>
             <button
               type="submit"
-              disabled={!answerOne || !answerTwo}
-              onClick={this.handleSubmitPoll}>
+              disabled={!optionOne || !optionTwo}
+              onClick={this.handleSubmitPoll}
+            >
               Ask Now!
             </button>
           </div>
