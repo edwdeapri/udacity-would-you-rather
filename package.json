@@ -2,8 +2,21 @@
   "name": "would-you-rather-an-udacity-application",
   "version": "1.0.0",
   "description": "This is a React/Redux application built for Udacity's Would You Rather project under the React & Redux module.",
-  "keywords": [],
+  "keywords": ["react", "javascript", "polling"],
+  "license": "MIT",
+  "author": "Edward Pritchard <edward.d.pritchard@gmail.com> (https://ethemcreative.com)",
   "main": "src/index.js",
+  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edwdeapri/udacity-would-you-rather.git"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "react": "16.5.2",
     "react-dom": "16.5.2",
@@ -14,12 +27,5 @@
     "redux": "4.0.1",
     "redux-thunk": "2.3.0"
   },
-  "devDependencies": {},
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+  "devDependencies": {}
 }

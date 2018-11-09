@@ -1,12 +1,10 @@
 # Would Your Rather... - A Polling Game App built with React
 
-Would You Rather... is a polling game application built with React for Udacity's React
-Nanodegree Program - React & Redux.
+Would You Rather... is a polling game application built with React for Udacity's React Nanodegree Program - React & Redux.
 
 ## Getting Started
 
-These instructions will get you a copy of the Would You Rather... application up and running
-on your local environment for development and testing purposes.
+These instructions will get you a copy of the Would You Rather... application up and running on your local environment for development and testing purposes.
 
 ### Prerequisites
 
