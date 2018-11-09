@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This is a React/Redux application built for Udacity's Would You Rather project under the React & Redux module.",
   "keywords": ["react", "javascript", "polling"],
+  "homepage": "https://codesandbox.io/s/github/edwdeapri/udacity-would-you-rather",
   "license": "MIT",
   "author": "Edward Pritchard <edward.d.pritchard@gmail.com> (https://ethemcreative.com)",
   "main": "src/index.js",
