@@ -58,7 +58,7 @@ The Would You Rather... application should now be open and running on the defaul
 
 ## Versioning
 
-For the versions available, see the [tags on this repository](https://github.com/edwdeapri/udacity-myreads).
+For the versions available, see the [tags on this repository](https://github.com/edwdeapri/udacity-would-you-rather).
 
 ## Authors
 
@@ -66,7 +66,7 @@ For the versions available, see the [tags on this repository](https://github.com
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](/LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## Acknowledgments
 
