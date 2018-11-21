@@ -2,6 +2,15 @@
 
 Would You Rather... is a polling game application built with React for Udacity's React Nanodegree Program - React & Redux.
 
+## Demo
+
+[Checkout this live demo](https://1y0mqz5rv7.codesandbox.io/) of the Would You Rather... app. Once the simulator has launched, follow these instructions:
+
+1. Select any user.
+2. Select any question to answer.
+3. Answer the question and see the results.
+4. Use the navigation to go back to the dashboard, create a new poll or see who the leader is.
+
 ## Getting Started
 
 These instructions will get you a copy of the Would You Rather... application up and running on your local environment for development and testing purposes.
